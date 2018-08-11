@@ -30,11 +30,11 @@ const removePost = {
     resolve: (root, params, source, fieldASTs) => {
         const projections = getProjection(fieldASTs);
         const deletedPost = new Promise((resolve, reject) => {
-            Post.findByIdAndRemove(
+            return Post.findByIdAndRemove(
                 params.id, 
                 projections, 
                 (err, posts) => {
-                    err ? reject(err) : resolve(posts);
+                    return err ? reject(err) : resolve(posts);
                 });
         });
         return deletedPost;

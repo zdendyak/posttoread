@@ -33,8 +33,8 @@ const createPost = {
         const projections = getProjection(fieldASTs);
         const post = new Post(params);
         const newPost = new Promise((resolve, reject) => {
-            post.save(projections, (err, posts) => {
-                err ? reject(err) : resolve(posts);
+            return post.save(projections, (err, posts) => {
+                return err ? reject(err) : resolve(posts);
             });
         });
         return newPost;

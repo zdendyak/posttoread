@@ -30,16 +30,16 @@ const queryType = new GraphQLObjectType({
         post: {
             type: postType,
             args: {
-                postId: {
-                    name: 'postId',
+                id: {
+                    name: 'Post ID',
                     type: new GraphQLNonNull(GraphQLID)
                 }
             },
-            resolve: (root, {postId}, source, fieldASTs) => {
+            resolve: (root, {id}, source, fieldASTs) => {
                 const projections = getProjection(fieldASTs);
                 const foundPost = new Promise((resolve, reject) => {
-                    Post.find({ _id: postId }, projections, (err, posts) => {
-                        err ? reject(err) : resolve(posts);
+                    return Post.findById(id, projections, (err, posts) => {
+                        return err ? reject(err) : resolve(posts);
                     });
                 });
                 return foundPost;
@@ -48,10 +48,11 @@ const queryType = new GraphQLObjectType({
         posts: {
             type: new GraphQLList(postType),
             resolve: (root, params, source, fieldASTs) => {
+                // TODO: Add @limit and @skip params
                 const projections = getProjection(fieldASTs);
                 const foundPosts = new Promise((resolve, reject) => {
-                    Post.find({}, projections, (err, posts) => {
-                        err ? reject(err) : resolve(posts);
+                    return Post.find({}, projections, (err, posts) => {
+                        return err ? reject(err) : resolve(posts);
                     });
                 });
                 return foundPosts;

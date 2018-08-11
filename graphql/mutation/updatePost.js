@@ -41,16 +41,26 @@ const updatePost = {
         const projections = getProjection(fieldASTs);
         
         const updatedPost = new Promise((resolve, reject) => {
-            Post.findByIdAndUpdate(
+            return Post.findByIdAndUpdate(
                 params.id, 
                 { $set: params }, 
                 projections, 
                 (err, posts) => {
-                    err ? reject(err) : resolve(posts);
+                    return err ? reject(err) : resolve(posts);
                 });
         });
         return updatedPost;
     }
+    // // Resolve function with async/await
+    // resolve: async (root, params, source, fieldASTs) => {
+    //     const projections = getProjection(fieldASTs);
+        
+    //     const updatedPost = await Post.findByIdAndUpdate(
+    //             params.id, 
+    //             { $set: params }, 
+    //             projections);
+    //     return updatedPost;
+    // }
 }
 
 module.exports = updatePost;
