@@ -1,0 +1,18 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "API to manage the posts (article links) for further reading",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "zdendyak",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.2",
+    "mongoose": "^5.2.7"
+  }
+}
