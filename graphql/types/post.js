@@ -21,6 +21,12 @@ const postType = new GraphQLObjectType({
         link: {
             type: GraphQLString
         },
+        note: {
+            type: GraphQLString
+        },
+        category: {
+            type: GraphQLString
+        },
         completed: {
             type: GraphQLBoolean
         },

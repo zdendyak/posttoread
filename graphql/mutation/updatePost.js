@@ -25,12 +25,18 @@ const updatePost = {
     args: {
         id: {
             name: 'id',
-            type: new GraphQLNonNull(GraphQLID)
+            type: new GraphQLNonNull(GraphQLString)
         },
         title: {
             type: GraphQLString
         },
         link: {
+            type: GraphQLString
+        },
+        note: {
+            type: GraphQLString
+        },
+        category: {
             type: GraphQLString
         },
         completed: {

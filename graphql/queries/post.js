@@ -32,7 +32,7 @@ const queryType = new GraphQLObjectType({
             args: {
                 id: {
                     name: 'Post ID',
-                    type: new GraphQLNonNull(GraphQLID)
+                    type: new GraphQLNonNull(GraphQLString)
                 }
             },
             resolve: (root, {id}, source, fieldASTs) => {

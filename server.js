@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const graphqlHTTP = require('express-graphql');
 const cors = require('cors');
@@ -11,9 +12,12 @@ const qraphqlSchema = require('./graphql/schema');
 const app = express();
 db(mongoose);
 
-
-app.use(logger('dev'));
 app.use('*', cors());
+app.use(bodyParser.json());
+app.use(logger('dev'));
+
+const apiRouter = require('./routes/api');
+app.use('/api', apiRouter);
 
 app.use('/graphql', graphqlHTTP({
     schema: qraphqlSchema,

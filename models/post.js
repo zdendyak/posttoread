@@ -10,6 +10,14 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
+    note: {
+        type: String,
+        default: ''
+    },
+    category: {
+        type: String,
+        default: ''
+    },
     created: {
         type: Date,
         default: Date.now

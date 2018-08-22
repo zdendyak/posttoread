@@ -27,6 +27,12 @@ const createPost = {
         },
         link: {
             type: new GraphQLNonNull(GraphQLString)
+        },
+        note: {
+            type: GraphQLString
+        },
+        category: {
+            type: GraphQLString
         }
     },
     resolve: (root, params, source, fieldASTs) => {

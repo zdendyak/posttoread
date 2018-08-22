@@ -24,7 +24,7 @@ const removePost = {
     args: {
         id: {
             name: 'id',
-            type: new GraphQLNonNull(GraphQLID)
+            type: new GraphQLNonNull(GraphQLString)
         }
     },
     resolve: (root, params, source, fieldASTs) => {
